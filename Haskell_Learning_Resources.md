@@ -9,8 +9,9 @@ All the corresponding resources have been listed in the descending order of the 
 * [Books](#books)
 * [MOOCs](#moocs)
 * [University lectures and recordings](#university-lectures-and-recordings)
-* [More Info](#more-info)
 * [In browser execution](#in-browser-execution)
+* [More Info](#more-info)
+
 
 ## Books
 * Graham Hutton &raquo; [Programming in Haskell, second edition](http://www.cs.nott.ac.uk/~pszgmh/pih.html)
@@ -37,7 +38,7 @@ If you like a "Head First" series kinda book, entertaining [but a bit old] take 
 
 
 
-## College lectures and recordings
+## University lectures and recordings
 * Brent Yorgey &raquo; "CSCI 360: Programming Languages (Fall 2016)" course @ Hendrix College &raquo; [http://ozark.hendrix.edu/~yorgey/360/](http://ozark.hendrix.edu/~yorgey/360/).
 * Tony Morris & Mark Hibberd &raquo; "NICTA Functional Programming Course" &raquo; [https://github.com/NICTA/course](https://github.com/NICTA/course).
 * Philip Wadler Haskell lecture recordings &raquo; [YouTube playlist](https://www.youtube.com/playlist?list=PLtRG9GLtNcHBv4cuh2w1cz5VsgY6adoc3).
@@ -51,12 +52,11 @@ If you like a "Head First" series kinda book, entertaining [but a bit old] take 
 * Thomas Hallgren &raquo; "Functional Programming -- TDA452" course @ Chalmers University of Technology and University of Gothenburg &raquo; [http://www.cse.chalmers.se/edu/year/2016/course/TDA452/](http://www.cse.chalmers.se/edu/year/2016/course/TDA452/).
 
 
-## More Info
-* A lot more info on a number of resources for learning Haskell can be found on [HaskellWiki Portal](https://wiki.haskell.org/Learning_Haskell).
-
-
-
 ## In browser execution
 * Simple Haskell code-snippets can be tried in the browser at [https://tryhaskell.org/](https://tryhaskell.org/) developed by Chris Done.
 * For Future Learn FP MOOC, instructors have developed [https://www.haskellmooc.co.uk](https://www.haskellmooc.co.uk), by extending the excellent "Try Haskell".
+
+
+## More Info
+* A lot more info on a number of resources for learning Haskell can be found on [HaskellWiki Portal](https://wiki.haskell.org/Learning_Haskell).
 

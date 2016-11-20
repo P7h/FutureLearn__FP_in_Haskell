@@ -917,7 +917,7 @@ n = x       <span class="pl-c">-- Wrong: can have only one definition of n</span
 <p>It is valid to write <code>n = n + 1</code>, it is termed as an equation and not as an assignment.</p>
 
 <ul>
-<li>Haskell tries and fails to compute the result due to the recursive definition of <code>n</code> that has the property that <code>n = n + 1</code>.</li>
+<li>Haskell tries and fails to compute the result due to the recursive definition of <code>n</code> that has the property that <code>n = n + 1</code>.</li>
 </ul>
 </li>
 <li>Think of an assignment statement as doing three things:
@@ -1057,18 +1057,18 @@ action = <span class="pl-k">case</span> color <span class="pl-k">of</span>
 
 <ul>
 <li>A list is a single value that contains several other values <em>of the <strong>same data type</strong></em>.</li>
-<li>Syntax: the elements are written in square parentheses, separated by commas.
-<code>haskell
-['3', 'a']
-[2.718, 50.0, -1.0]
-</code>
+<li>
+<p>Syntax: the elements are written in square parentheses, separated by commas.</p>
+
+<div class="highlight highlight-source-haskell"><pre>[<span class="pl-s"><span class="pl-pds">'</span>3<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>]
+[<span class="pl-c1">2.718</span>, <span class="pl-c1">50.0</span>, -<span class="pl-c1">1.0</span>]</pre></div>
 </li>
-<li>Return multiple values: Lists are useful to return multiple results from a function. <code>minmax</code> function below  returns both the smaller and the larger of two numbers:
-<code>haskell
-minmax = \x y -&gt; [min x y, max x y]
-minmax 3 8  == [3,8]
-minmax 8 3  == [3,8]
-</code>
+<li>
+<p>Return multiple values: Lists are useful to return multiple results from a function. <code>minmax</code> function below  returns both the smaller and the larger of two numbers:</p>
+
+<div class="highlight highlight-source-haskell"><pre>minmax = \x y -&gt; [<span class="pl-c1">min</span> x y, <span class="pl-c1">max</span> x y]
+minmax <span class="pl-c1">3</span> <span class="pl-c1">8</span>  == [<span class="pl-c1">3</span>,<span class="pl-c1">8</span>]
+minmax <span class="pl-c1">8</span> <span class="pl-c1">3</span>  == [<span class="pl-c1">3</span>,<span class="pl-c1">8</span>]</pre></div>
 </li>
 <li>
 <p>Lazy evaluation: Elements / expressions are evaluated lazily. As long as the expression is not accessed, it is not evaluated.</p>
@@ -1082,10 +1082,17 @@ xs !! <span class="pl-c1">100</span>       <span class="pl-c">-- we can access a
 
 <ul>
 <li>
-<code>++</code>: to concat two lists <code>[23, 29] ++ [48, 41, 44] == [23, 29, 48, 41, 44]</code>
+<p><code>++</code>: to concat two lists </p>
+
+<div class="highlight highlight-source-haskell"><pre>[<span class="pl-c1">23</span>, <span class="pl-c1">29</span>] ++ [<span class="pl-c1">48</span>, <span class="pl-c1">41</span>, <span class="pl-c1">44</span>] == [<span class="pl-c1">23</span>, <span class="pl-c1">29</span>, <span class="pl-c1">48</span>, <span class="pl-c1">41</span>, <span class="pl-c1">44</span>]</pre></div>
 
 <ul>
-<li>If <code>xs</code> is a list, then <code>[] ++ xs = xs = xs ++ []</code>.</li>
+<li>
+<p>If <code>xs</code> is a list, then </p>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">[]</span> ++ xs = xs
+xs ++ <span class="pl-c1">[]</span> = xs</pre></div>
+</li>
 </ul>
 </li>
 <li>
@@ -1098,10 +1105,10 @@ xs !! <span class="pl-c1">100</span>       <span class="pl-c">-- we can access a
 </li>
 </ul>
 </li>
-<li>List comprehensions were inspired by the mathematical notation set comprehension.
-<code>haskell
-[3*x | x &lt;- [1..10]] == [3,6,9,12,15,18,21,24,27,30]
-</code>
+<li>
+<p>List comprehensions were inspired by the mathematical notation set comprehension.</p>
+
+<div class="highlight highlight-source-haskell"><pre>[<span class="pl-c1">3</span>*x | x &lt;- [<span class="pl-c1">1</span>..<span class="pl-c1">10</span><span class="pl-k">]]</span> == [<span class="pl-c1">3</span>,<span class="pl-c1">6</span>,<span class="pl-c1">9</span>,<span class="pl-c1">12</span>,<span class="pl-c1">15</span>,<span class="pl-c1">18</span>,<span class="pl-c1">21</span>,<span class="pl-c1">24</span>,<span class="pl-c1">27</span>,<span class="pl-c1">30</span>]</pre></div>
 </li>
 </ul>
 </li>
@@ -1118,16 +1125,24 @@ xs !! <span class="pl-c1">100</span>       <span class="pl-c">-- we can access a
 </ul>
 </li>
 <li>
-<code>head</code>: first element of list <code>head [1..10] == 1</code>
+<p><code>head</code>: first element of list</p>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">head</span> [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>] == <span class="pl-c1">1</span></pre></div>
 </li>
 <li>
-<code>tail</code>: entire list except for the first element <code>tail [1..10] == [2,3,4,5,6,7,8,9,10]</code>
+<p><code>tail</code>: entire list except for the first element </p>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">tail</span> [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>] == [<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">7</span>,<span class="pl-c1">8</span>,<span class="pl-c1">9</span>,<span class="pl-c1">10</span>]</pre></div>
 </li>
 <li>
-<code>init</code>: entire list except for the last element <code>init [1..10] == [1,2,3,4,5,6,7,8,9]</code>
+<p><code>init</code>: entire list except for the last element</p>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">init</span> [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>] == [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">7</span>,<span class="pl-c1">8</span>,<span class="pl-c1">9</span>]</pre></div>
 </li>
 <li>
-<code>last</code>: last element of the list <code>last [1..10] == 10</code>
+<p><code>last</code>: last element of the list</p>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">last</span> [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>] == <span class="pl-c1">10</span></pre></div>
 </li>
 </ul>
 </li>

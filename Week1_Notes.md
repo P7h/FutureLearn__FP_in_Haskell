@@ -123,7 +123,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     ```
 
 * It is valid to write `n = n + 1`, it is termed as an equation and not as an assignment.
-    * Haskell tries and fails to compute the result due to the recursive definition of `n` that has the property that `n = n + 1`.
+    * Haskell tries and fails to compute the result due to the recursive definition of `n` that has the property that `n = n + 1`.
 * Think of an assignment statement as doing three things:
     * It evaluates the right hand side: computing a useful value.
     * It discards the value of the variable on the left hand side: destroying a value that might or might not be useful.
@@ -203,17 +203,20 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 ### Lists
 * A list is a single value that contains several other values _of the **same data type**_.
 * Syntax: the elements are written in square parentheses, separated by commas.
+
     ```haskell
     ['3', 'a']
     [2.718, 50.0, -1.0]
     ```
 * Return multiple values: Lists are useful to return multiple results from a function. `minmax` function below  returns both the smaller and the larger of two numbers:
+    
     ```haskell
     minmax = \x y -> [min x y, max x y]
     minmax 3 8  == [3,8]
     minmax 8 3  == [3,8]
     ```
 * Lazy evaluation: Elements / expressions are evaluated lazily. As long as the expression is not accessed, it is not evaluated.
+
     ```haskell
     let xs = [0..]  -- doesn’t throw out of memory
     xs !! 100       -- we can access any element in the list defined
@@ -221,12 +224,22 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     ```
 
 * Constructing lists:
-    * `++`: to concat two lists `[23, 29] ++ [48, 41, 44] == [23, 29, 48, 41, 44]`
-        * If `xs` is a list, then `[] ++ xs = xs = xs ++ []`.
+    * `++`: to concat two lists 
+    
+        ```haskell
+        [23, 29] ++ [48, 41, 44] == [23, 29, 48, 41, 44]
+        ```
+        * If `xs` is a list, then 
+    
+            ```haskell
+            [] ++ xs = xs
+            xs ++ [] = xs
+            ```
     * `..`: sequence of items `[0..5]` gives `[0,1,2,3,4,5]`
         * Sequences are not just limited to numbers. `[a..e] == [’a’,’b’,’c’,’d’,’e’]`
         * Elements can start from any digit and consecutive elements can be incremented or decremented. `[4,7..15] == [4,7,10,13,16,19]`
     * List comprehensions were inspired by the mathematical notation set comprehension.
+
         ```haskell
         [3*x | x <- [1..10]] == [3,6,9,12,15,18,21,24,27,30]
         ```
@@ -234,10 +247,26 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 * Operating on lists
     * `!!`: index a list by numbering the elements, starting with 0.
         * value at a specific index `['a'..'z'] !! 13 == n`
-    * `head`: first element of list `head [1..10] == 1`
-    * `tail`: entire list except for the first element `tail [1..10] == [2,3,4,5,6,7,8,9,10]`
-    * `init`: entire list except for the last element `init [1..10] == [1,2,3,4,5,6,7,8,9]`
-    * `last`: last element of the list `last [1..10] == 10`
+    * `head`: first element of list
+
+        ```haskell
+        head [1..10] == 1
+        ```
+    * `tail`: entire list except for the first element 
+
+        ```haskell
+        tail [1..10] == [2,3,4,5,6,7,8,9,10]
+        ```
+    * `init`: entire list except for the last element
+
+        ```haskell
+        init [1..10] == [1,2,3,4,5,6,7,8,9]
+        ```
+    * `last`: last element of the list
+
+        ```haskell
+        last [1..10] == 10
+        ```
 
 
 ## Try Haskell online

@@ -1,6 +1,7 @@
 # Future Learn MOOC for "Functional Programming in Haskell"
 
-My notes of Future Learn MOOC for [Functional Programming in Haskell: Supercharge Your Coding](https://www.futurelearn.com/courses/functional-programming-haskell) by Wim Vanderbauwhede & Jeremy Singer in association with University of Glasgow.
+My notes of Future Learn MOOC for [Functional Programming in Haskell: Supercharge Your Coding](https://www.futurelearn.com/courses/functional-programming-haskell) by Wim Vanderbauwhede & Jeremy Singer in association with University of Glasgow.<br>
+I took this course when it ran for the first time between 19th Sep, 2016 till 31st Oct, 2016 [duration of 6 weeks].
 
 Though there were quizzes on every important topic, there were no hands-on exercises in this course unfortunately, which is a bit of a dampener if you want to learn an altogether different kinda language.
 
