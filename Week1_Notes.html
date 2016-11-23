@@ -750,7 +750,7 @@ pre {
 <ul>
 <li><a href="#blocks">Blocks</a></li>
 <li><a href="#conditions">Conditions</a></li>
-<li><a href="#case-statement">Case statement</a></li>
+<li><a href="#case-statement"><code>case</code> statement</a></li>
 </ul>
 </li>
 <li>
@@ -983,7 +983,7 @@ n = x       <span class="pl-c">-- Wrong: can have only one definition of n</span
 </ul>
 
 <h3>
-<a id="user-content-case-statement" class="anchor" href="#case-statement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Case statement</h3>
+<a id="user-content-case-statement" class="anchor" href="#case-statement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>case</code> statement</h3>
 
 <ul>
 <li>
@@ -1060,7 +1060,8 @@ action = <span class="pl-k">case</span> color <span class="pl-k">of</span>
 <li>
 <p>Syntax: the elements are written in square parentheses, separated by commas.</p>
 
-<div class="highlight highlight-source-haskell"><pre>[<span class="pl-s"><span class="pl-pds">'</span>3<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>]
+<div class="highlight highlight-source-haskell"><pre>[<span class="pl-s"><span class="pl-pds">'</span>3<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>5<span class="pl-pds">'</span></span>]
+[<span class="pl-s"><span class="pl-pds">'</span>x<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>y<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>z<span class="pl-pds">'</span></span>]
 [<span class="pl-c1">2.718</span>, <span class="pl-c1">50.0</span>, -<span class="pl-c1">1.0</span>]</pre></div>
 </li>
 <li>
@@ -1090,8 +1091,8 @@ xs !! <span class="pl-c1">100</span>       <span class="pl-c">-- we can access a
 <li>
 <p>If <code>xs</code> is a list, then </p>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">[]</span> ++ xs = xs
-xs ++ <span class="pl-c1">[]</span> = xs</pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">[]</span> ++ xs == xs
+xs ++ <span class="pl-c1">[]</span> == xs</pre></div>
 </li>
 </ul>
 </li>
