@@ -16,7 +16,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 * [More Basic Elements](#more-basic-elements)
     * [Blocks](#blocks)
     * [Conditions](#conditions)
-    * [Case statement](#case-statement)
+    * [`case` statement](#case-statement)
 * [Reduction, Functions and Lists](#reduction-functions-and-lists)
     * [Reduction](#reduction)
         * [The Church-Rosser theorem](#the-church-rosser-theorem)
@@ -163,7 +163,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
             else y
     ```
 
-### Case statement
+### `case` statement
 * A `case` statement is useful for conditions with more than two choices.
 
     ```haskell
@@ -205,7 +205,8 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 * Syntax: the elements are written in square parentheses, separated by commas.
 
     ```haskell
-    ['3', 'a']
+    ['3', '5']
+    ['x', 'y', 'z']
     [2.718, 50.0, -1.0]
     ```
 * Return multiple values: Lists are useful to return multiple results from a function. `minmax` function below  returns both the smaller and the larger of two numbers:
@@ -232,8 +233,8 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
         * If `xs` is a list, then 
     
             ```haskell
-            [] ++ xs = xs
-            xs ++ [] = xs
+            [] ++ xs == xs
+            xs ++ [] == xs
             ```
     * `..`: sequence of items `[0..5]` gives `[0,1,2,3,4,5]`
         * Sequences are not just limited to numbers. `[a..e] == [’a’,’b’,’c’,’d’,’e’]`
