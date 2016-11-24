@@ -1,11 +1,12 @@
-# Week1 Notes of "Functional Programming in Haskell"
+# Week1 Notes of "Haskell First Steps" -- "Functional Programming in Haskell" MOOC
+
 
 ```
 Haskell is a purely functional, lazily evaluated, statically typed programming language with type inference.
 ```
 
 ## Contents
-* [Basic Elements](#basic-elements)
+* [Haskell Basics](#haskell-basics)
     * [Expressions](#expressions)
     * [Functions](#functions)
     * [Types](#types)
@@ -13,21 +14,21 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     * [Anonymous functions](#anonymous-functions)
     * [Higher-order functions](#higher-order-functions)
     * [More notes](#more-notes)
-* [More Basic Elements](#more-basic-elements)
+* [Haskell More Basics](#haskell-more-basics)
     * [Blocks](#blocks)
     * [Conditions](#conditions)
     * [`case` statement](#case-statement)
 * [Reduction, Functions and Lists](#reduction-functions-and-lists)
     * [Reduction](#reduction)
         * [The Church-Rosser theorem](#the-church-rosser-theorem)
-    * [Functions](#functions_1)
-    * [Lists](#lists_1)
+    * [Functions](#functions-1)
+    * [Lists](#lists-1)
 * [Try Haskell online](#try-haskell-online)
 * [Install Haskell](#install-haskell)
 * [Recommended reading](#recommended-reading)
 
 
-## Basic Elements
+## Haskell Basics
 ### Expressions
 * Haskell has no statements, only expressions!
 * Pure functional programming languages don’t have any statements — no assignments, no jumps.
@@ -136,7 +137,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     * Same is the case with `abs (-3)`; this should not be written as `abs -3`.
 
 
-## More Basic Elements
+## Haskell More Basics
 ### Blocks
 * Example code block:
     ```haskell
@@ -165,15 +166,21 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 
 ### `case` statement
 * A `case` statement is useful for conditions with more than two choices.
+* Can't have guards in `case` expressions.
 
     ```haskell
     data Color = Red | Blue | Yellow
 
     color = set_color
     action = case color of
-        Red -> action1
-        Blue -> action2
-        Yellow -> action3
+        Red     -> action1
+        Blue    -> action2
+        Yellow  -> action3
+
+
+    double zs   = case zs of
+        []      -> []
+        (x:xs)  -> (2 * x) : (double xs)
     ```
 
 
@@ -210,7 +217,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     [2.718, 50.0, -1.0]
     ```
 * Return multiple values: Lists are useful to return multiple results from a function. `minmax` function below  returns both the smaller and the larger of two numbers:
-    
+
     ```haskell
     minmax = \x y -> [min x y, max x y]
     minmax 3 8  == [3,8]
@@ -219,27 +226,38 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 * Lazy evaluation: Elements / expressions are evaluated lazily. As long as the expression is not accessed, it is not evaluated.
 
     ```haskell
-    let xs = [0..]  -- doesn’t throw out of memory
-    xs !! 100       -- we can access any element in the list defined
-    100             -- result of the above expression
+    let xs = [0..]      -- doesn’t throw out of memory
+    xs !! 100 == 100    -- we can access any element in the list defined
+    tail xs             -- This will continue to generate the numbers..........
     ```
 
 * Constructing lists:
-    * `++`: to concat two lists 
-    
+    * `++`: to concat two lists
+
         ```haskell
         [23, 29] ++ [48, 41, 44] == [23, 29, 48, 41, 44]
         ```
-        * If `xs` is a list, then 
-    
+
+        * If `xs` is a list, then
+
             ```haskell
             [] ++ xs == xs
             xs ++ [] == xs
             ```
     * `..`: sequence of items `[0..5]` gives `[0,1,2,3,4,5]`
-        * Sequences are not just limited to numbers. `[a..e] == [’a’,’b’,’c’,’d’,’e’]`
-        * Elements can start from any digit and consecutive elements can be incremented or decremented. `[4,7..15] == [4,7,10,13,16,19]`
-    * List comprehensions were inspired by the mathematical notation set comprehension.
+        * Sequences are not just limited to numbers. `['a'..'e'] == ['a','b','c','d','e']` which is actually same as `"abcde"` as any String in Haskell is basically a list of characters.
+        * Elements can start from any digit / character and consecutive elements can be incremented or decremented.
+
+            ```haskell
+            [4,7..20]       == [4,7,10,13,16,19]        -- each subsequent element is incremented by 3
+            [10,7..(-13)]   == [10,7,4,1,-2,-5,-8,-11]  -- each subsequent element is decremented by 3
+            ['p','s'..'z']  == "psvy"                   -- for alphabets
+            ['x','s'..'m']  == "xsn"                    -- alphabets decrementing
+            ['$'..'*']      == "$%&'()*"                -- Even for special characters
+            [(-6)..2]       == [-6,-5,-4,-3,-2,-1,0,1,2]
+            ```
+
+    * List comprehensions in Haskell were inspired by the mathematical notation set comprehension.
 
         ```haskell
         [3*x | x <- [1..10]] == [3,6,9,12,15,18,21,24,27,30]
@@ -253,10 +271,11 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
         ```haskell
         head [1..10] == 1
         ```
-    * `tail`: entire list except for the first element 
+    * `tail`: entire list except for the first element
 
         ```haskell
-        tail [1..10] == [2,3,4,5,6,7,8,9,10]
+        tail [1..10]    == [2,3,4,5,6,7,8,9,10]
+        tail ['m'..'r'] == "nopqr"
         ```
     * `init`: entire list except for the last element
 
@@ -266,7 +285,8 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     * `last`: last element of the list
 
         ```haskell
-        last [1..10] == 10
+        last [1..10]        == 10
+        last ['x','s'..'m'] == 'm'
         ```
 
 
@@ -278,8 +298,9 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 ## Install Haskell
 * Haskell compiler / interpreter can be installed using [Haskell Platform](https://www.haskell.org/platform).
 
->> Note: Though this course advices to install Haskell Platform, it is better to just install [`Stack`](http://www.haskellstack.org/). Please look for the installation instructions and documentation on [Stack website](https://docs.haskellstack.org/en/stable/README/#how-to-install).
+>> Note: Though this course advices to install Haskell Platform, it is better to install [`Stack`](http://www.haskellstack.org/). Please look for the installation instructions and documentation on [Stack website](https://docs.haskellstack.org/en/stable/README/#how-to-install).
 
 
 ## Recommended reading
 * Please check [`Haskell Learning Resources`](Haskell_Learning_Resources.md) for detailed list of resources for learning Haskell.
+
