@@ -1,6 +1,6 @@
 # Haskell learning resources
 
-## Intro
+## Introduction
 
 This page lists all Haskell learning resources I came across during my learning process late 2016.
 
