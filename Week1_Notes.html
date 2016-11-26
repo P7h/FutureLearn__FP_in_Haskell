@@ -727,6 +727,8 @@ pre {
 <pre><code>Haskell is a purely functional, lazily evaluated, statically typed programming language with type inference.
 </code></pre>
 
+<hr>
+
 <h2>
 <a id="contents" class="anchor" href="#contents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contents</h2>
 
@@ -772,6 +774,8 @@ pre {
 <li><a href="#install-haskell">Install Haskell</a></li>
 <li><a href="#recommended-reading">Recommended reading</a></li>
 </ul>
+
+<hr>
 
 <h2>
 <a id="haskell-basics" class="anchor" href="#haskell-basics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Haskell Basics</h2>
@@ -870,8 +874,7 @@ f x y =  x*y+x+y</pre></div>
 <li>
 <p>HOFs take other functions as arguments and may also return other functions.</p>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">map</span> (\x -&gt; x*<span class="pl-c1">2</span>) [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>]
-[<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">6</span>,<span class="pl-c1">8</span>,<span class="pl-c1">10</span>,<span class="pl-c1">12</span>,<span class="pl-c1">14</span>,<span class="pl-c1">16</span>,<span class="pl-c1">18</span>,<span class="pl-c1">20</span>]</pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">map</span> (\x -&gt; x*<span class="pl-c1">2</span>) [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>] <span class="pl-c">-- &gt;2,4,6,8,10,12,14,16,18,20]</span></pre></div>
 </li>
 <li>
 <p>More info on the example Higher-order function:</p>
@@ -945,6 +948,8 @@ n = x       <span class="pl-c">-- Wrong: can have only one definition of n</span
 </li>
 </ul>
 
+<hr>
+
 <h2>
 <a id="haskell-more-basics" class="anchor" href="#haskell-more-basics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Haskell More Basics</h2>
 
@@ -1004,6 +1009,8 @@ double zs   = <span class="pl-k">case</span> zs <span class="pl-k">of</span>
     (x:xs)  -&gt; (<span class="pl-c1">2</span> * x) : (double xs)</pre></div>
 </li>
 </ul>
+
+<hr>
 
 <h2>
 <a id="reduction-functions-and-lists" class="anchor" href="#reduction-functions-and-lists" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reduction, Functions and Lists</h2>
@@ -1074,14 +1081,14 @@ double zs   = <span class="pl-k">case</span> zs <span class="pl-k">of</span>
 <p>Return multiple values: Lists are useful to return multiple results from a function. <code>minmax</code> function below  returns both the smaller and the larger of two numbers:</p>
 
 <div class="highlight highlight-source-haskell"><pre>minmax = \x y -&gt; [<span class="pl-c1">min</span> x y, <span class="pl-c1">max</span> x y]
-minmax <span class="pl-c1">3</span> <span class="pl-c1">8</span>  == [<span class="pl-c1">3</span>,<span class="pl-c1">8</span>]
-minmax <span class="pl-c1">8</span> <span class="pl-c1">3</span>  == [<span class="pl-c1">3</span>,<span class="pl-c1">8</span>]</pre></div>
+minmax <span class="pl-c1">3</span> <span class="pl-c1">8</span>  <span class="pl-c">-- &gt; [3,8]</span>
+minmax <span class="pl-c1">8</span> <span class="pl-c1">3</span>  <span class="pl-c">-- &gt; [3,8]</span></pre></div>
 </li>
 <li>
 <p>Lazy evaluation: Elements / expressions are evaluated lazily. As long as the expression is not accessed, it is not evaluated.</p>
 
 <div class="highlight highlight-source-haskell"><pre><span class="pl-k">let</span> xs = [<span class="pl-c1">0</span>.<span class="pl-k">.]</span>      <span class="pl-c">-- doesn’t throw out of memory</span>
-xs !! <span class="pl-c1">100</span> == <span class="pl-c1">100</span>    <span class="pl-c">-- we can access any element in the list defined</span>
+xs !! <span class="pl-c1">100</span> <span class="pl-c">-- &gt; 100    -- we can access any element in the list defined</span>
 <span class="pl-c1">tail</span> xs             <span class="pl-c">-- This will continue to generate the numbers..........</span></pre></div>
 </li>
 <li>
@@ -1091,7 +1098,7 @@ xs !! <span class="pl-c1">100</span> == <span class="pl-c1">100</span>    <span 
 <li>
 <p><code>++</code>: to concat two lists</p>
 
-<div class="highlight highlight-source-haskell"><pre>[<span class="pl-c1">23</span>, <span class="pl-c1">29</span>] ++ [<span class="pl-c1">48</span>, <span class="pl-c1">41</span>, <span class="pl-c1">44</span>] == [<span class="pl-c1">23</span>, <span class="pl-c1">29</span>, <span class="pl-c1">48</span>, <span class="pl-c1">41</span>, <span class="pl-c1">44</span>]</pre></div>
+<div class="highlight highlight-source-haskell"><pre>[<span class="pl-c1">23</span>, <span class="pl-c1">29</span>] ++ [<span class="pl-c1">48</span>, <span class="pl-c1">41</span>, <span class="pl-c1">44</span>] <span class="pl-c">-- &gt; [23, 29, 48, 41, 44]</span></pre></div>
 
 <ul>
 <li>
@@ -1106,23 +1113,23 @@ xs ++ <span class="pl-c1">[]</span> == xs</pre></div>
 <p><code>..</code>: sequence of items <code>[0..5]</code> gives <code>[0,1,2,3,4,5]</code></p>
 
 <ul>
-<li>Sequences are not just limited to numbers. <code>['a'..'e'] == ['a','b','c','d','e']</code> which is actually same as <code>"abcde"</code> as any String in Haskell is basically a list of characters.</li>
+<li>Sequences are not just limited to numbers. <code>['a'..'e'] = ['a','b','c','d','e']</code> which is actually same as <code>"abcde"</code> as any String in Haskell is basically a list of characters.</li>
 <li>
 <p>Elements can start from any digit / character and consecutive elements can be incremented or decremented.</p>
 
-<div class="highlight highlight-source-haskell"><pre>[<span class="pl-c1">4</span>,<span class="pl-c1">7</span>..<span class="pl-c1">20</span>]       == [<span class="pl-c1">4</span>,<span class="pl-c1">7</span>,<span class="pl-c1">10</span>,<span class="pl-c1">13</span>,<span class="pl-c1">16</span>,<span class="pl-c1">19</span>]        <span class="pl-c">-- each subsequent element is incremented by 3</span>
-[<span class="pl-c1">10</span>,<span class="pl-c1">7</span>..(-<span class="pl-c1">13</span><span class="pl-k">)]</span>   == [<span class="pl-c1">10</span>,<span class="pl-c1">7</span>,<span class="pl-c1">4</span>,<span class="pl-c1">1</span>,-<span class="pl-c1">2</span>,-<span class="pl-c1">5</span>,-<span class="pl-c1">8</span>,-<span class="pl-c1">11</span>]  <span class="pl-c">-- each subsequent element is decremented by 3</span>
-[<span class="pl-s"><span class="pl-pds">'</span>p<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>s<span class="pl-pds">'</span></span>..<span class="pl-s"><span class="pl-pds">'</span>z<span class="pl-pds">'</span></span>]  == <span class="pl-s"><span class="pl-pds">"</span>psvy<span class="pl-pds">"</span></span>                   <span class="pl-c">-- for alphabets</span>
-[<span class="pl-s"><span class="pl-pds">'</span>x<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>s<span class="pl-pds">'</span></span>..<span class="pl-s"><span class="pl-pds">'</span>m<span class="pl-pds">'</span></span>]  == <span class="pl-s"><span class="pl-pds">"</span>xsn<span class="pl-pds">"</span></span>                    <span class="pl-c">-- alphabets decrementing</span>
-[<span class="pl-s"><span class="pl-pds">'</span>$<span class="pl-pds">'</span></span>..<span class="pl-s"><span class="pl-pds">'</span>*<span class="pl-pds">'</span></span>]      == <span class="pl-s"><span class="pl-pds">"</span>$%&amp;'()*<span class="pl-pds">"</span></span>                <span class="pl-c">-- Even for special characters</span>
-[(-<span class="pl-c1">6</span>)..<span class="pl-c1">2</span>]       == [-<span class="pl-c1">6</span>,-<span class="pl-c1">5</span>,-<span class="pl-c1">4</span>,-<span class="pl-c1">3</span>,-<span class="pl-c1">2</span>,-<span class="pl-c1">1</span>,<span class="pl-c1">0</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>]</pre></div>
+<div class="highlight highlight-source-haskell"><pre>[<span class="pl-c1">4</span>,<span class="pl-c1">7</span>..<span class="pl-c1">20</span>]       <span class="pl-c">-- &gt; [4,7,10,13,16,19]        -- each subsequent element is incremented by 3</span>
+[<span class="pl-c1">10</span>,<span class="pl-c1">7</span>..(-<span class="pl-c1">13</span><span class="pl-k">)]</span>   <span class="pl-c">-- &gt; [10,7,4,1,-2,-5,-8,-11]  -- each subsequent element is decremented by 3</span>
+[<span class="pl-s"><span class="pl-pds">'</span>p<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>s<span class="pl-pds">'</span></span>..<span class="pl-s"><span class="pl-pds">'</span>z<span class="pl-pds">'</span></span>]  <span class="pl-c">-- &gt; "psvy"                   -- for alphabets</span>
+[<span class="pl-s"><span class="pl-pds">'</span>x<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>s<span class="pl-pds">'</span></span>..<span class="pl-s"><span class="pl-pds">'</span>m<span class="pl-pds">'</span></span>]  <span class="pl-c">-- &gt; "xsn"                    -- alphabets decrementing</span>
+[<span class="pl-s"><span class="pl-pds">'</span>$<span class="pl-pds">'</span></span>..<span class="pl-s"><span class="pl-pds">'</span>*<span class="pl-pds">'</span></span>]      <span class="pl-c">-- &gt; "$%&amp;'()*"                -- Even for special characters</span>
+[(-<span class="pl-c1">6</span>)..<span class="pl-c1">2</span>]       <span class="pl-c">-- &gt; [-6,-5,-4,-3,-2,-1,0,1,2]</span></pre></div>
 </li>
 </ul>
 </li>
 <li>
 <p>List comprehensions in Haskell were inspired by the mathematical notation set comprehension.</p>
 
-<div class="highlight highlight-source-haskell"><pre>[<span class="pl-c1">3</span>*x | x &lt;- [<span class="pl-c1">1</span>..<span class="pl-c1">10</span><span class="pl-k">]]</span> == [<span class="pl-c1">3</span>,<span class="pl-c1">6</span>,<span class="pl-c1">9</span>,<span class="pl-c1">12</span>,<span class="pl-c1">15</span>,<span class="pl-c1">18</span>,<span class="pl-c1">21</span>,<span class="pl-c1">24</span>,<span class="pl-c1">27</span>,<span class="pl-c1">30</span>]</pre></div>
+<div class="highlight highlight-source-haskell"><pre>[<span class="pl-c1">3</span>*x | x &lt;- [<span class="pl-c1">1</span>..<span class="pl-c1">10</span><span class="pl-k">]]</span> <span class="pl-c">-- &gt; [3,6,9,12,15,18,21,24,27,30]</span></pre></div>
 </li>
 </ul>
 </li>
@@ -1134,35 +1141,37 @@ xs ++ <span class="pl-c1">[]</span> == xs</pre></div>
 <code>!!</code>: index a list by numbering the elements, starting with 0.
 
 <ul>
-<li>value at a specific index <code>['a'..'z'] !! 13 == n</code>
+<li>value at a specific index <code>['a'..'z'] !! 13 -- &gt; n</code>
 </li>
 </ul>
 </li>
 <li>
 <p><code>head</code>: first element of list</p>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">head</span> [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>] == <span class="pl-c1">1</span></pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">head</span> [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>] <span class="pl-c">-- &gt; 1</span></pre></div>
 </li>
 <li>
 <p><code>tail</code>: entire list except for the first element</p>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">tail</span> [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>]    == [<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">7</span>,<span class="pl-c1">8</span>,<span class="pl-c1">9</span>,<span class="pl-c1">10</span>]
-<span class="pl-c1">tail</span> [<span class="pl-s"><span class="pl-pds">'</span>m<span class="pl-pds">'</span></span>..<span class="pl-s"><span class="pl-pds">'</span>r<span class="pl-pds">'</span></span>] == <span class="pl-s"><span class="pl-pds">"</span>nopqr<span class="pl-pds">"</span></span></pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">tail</span> [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>]    <span class="pl-c">-- &gt; [2,3,4,5,6,7,8,9,10]</span>
+<span class="pl-c1">tail</span> [<span class="pl-s"><span class="pl-pds">'</span>m<span class="pl-pds">'</span></span>..<span class="pl-s"><span class="pl-pds">'</span>r<span class="pl-pds">'</span></span>] <span class="pl-c">-- &gt; "nopqr"</span></pre></div>
 </li>
 <li>
 <p><code>init</code>: entire list except for the last element</p>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">init</span> [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>] == [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">7</span>,<span class="pl-c1">8</span>,<span class="pl-c1">9</span>]</pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">init</span> [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>] <span class="pl-c">-- &gt; [1,2,3,4,5,6,7,8,9]</span></pre></div>
 </li>
 <li>
 <p><code>last</code>: last element of the list</p>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">last</span> [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>]        == <span class="pl-c1">10</span>
-<span class="pl-c1">last</span> [<span class="pl-s"><span class="pl-pds">'</span>x<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>s<span class="pl-pds">'</span></span>..<span class="pl-s"><span class="pl-pds">'</span>m<span class="pl-pds">'</span></span>] == <span class="pl-s"><span class="pl-pds">'</span>m<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">last</span> [<span class="pl-c1">1</span>..<span class="pl-c1">10</span>]        <span class="pl-c">-- &gt; 10</span>
+<span class="pl-c1">last</span> [<span class="pl-s"><span class="pl-pds">'</span>x<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>s<span class="pl-pds">'</span></span>..<span class="pl-s"><span class="pl-pds">'</span>m<span class="pl-pds">'</span></span>] <span class="pl-c">-- &gt; 'm'</span></pre></div>
 </li>
 </ul>
 </li>
 </ul>
+
+<hr>
 
 <h2>
 <a id="try-haskell-online" class="anchor" href="#try-haskell-online" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Try Haskell online</h2>
@@ -1171,6 +1180,8 @@ xs ++ <span class="pl-c1">[]</span> == xs</pre></div>
 <li>Haskell can be tried in the browser at <a href="https://www.haskellmooc.co.uk">https://www.haskellmooc.co.uk</a>.</li>
 <li>This website was actually created by extending the excellent "Try Haskell" developed by Chris Done: <a href="https://tryhaskell.org/">https://tryhaskell.org/</a>.</li>
 </ul>
+
+<hr>
 
 <h2>
 <a id="install-haskell" class="anchor" href="#install-haskell" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install Haskell</h2>
@@ -1185,10 +1196,14 @@ xs ++ <span class="pl-c1">[]</span> == xs</pre></div>
 </blockquote>
 </blockquote>
 
+<hr>
+
 <h2>
 <a id="recommended-reading" class="anchor" href="#recommended-reading" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Recommended reading</h2>
 
 <ul>
 <li>Please check <a href="///D://z__Prashanth/Personal/CloudSCM/GitHub/FutureLearn__FP_in_Haskell/Haskell_Learning_Resources.md"><code>Haskell Learning Resources</code></a> for detailed list of resources for learning Haskell.</li>
 </ul>
+
+<hr>
 </article></body></html>

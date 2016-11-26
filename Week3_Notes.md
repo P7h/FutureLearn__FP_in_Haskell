@@ -21,6 +21,7 @@
     * [Type Classes](#type-classes)
 * [Haskell History](#haskell-history)
 
+------
 
 ## Functions on Lists
 ### Recursion and lists
@@ -220,6 +221,7 @@ foldl   :: (b -> a -> b) -> b -> [a] -> b
 foldr   :: (a -> b -> b) -> b -> [a] -> b
 ```
 
+------
 
 ## Custom Data Types
 ### User defined data types
@@ -294,6 +296,7 @@ One <= Two                  -- > True
 
 ```
 
+------
 
 ## Haskell History
 * [Brief history of Haskell](https://www.futurelearn.com/courses/functional-programming-haskell/1/steps/115453)

@@ -4,12 +4,12 @@
 
 This page lists all Haskell learning resources I came across during my learning process late 2016.
 
-All the corresponding resources have been listed in the descending order of the priority _as per my knowledge_.
+All the corresponding resources have been listed in the descending order of the priority _as per my [limited] knowledge_.
 
 * [Books](#books)
 * [MOOCs](#moocs)
 * [University lectures and recordings](#university-lectures-and-recordings)
-* [In browser execution](#in-browser-execution)
+* [Haskell Playground](#haskell-playground)
 * [More Info](#more-info)
 
 ------
@@ -55,8 +55,10 @@ If you like a "Head First" series kinda book, entertaining [but a bit old] take 
 
 ------
 
-## In browser execution
-* Simple Haskell code-snippets can be tried in the browser at [https://tryhaskell.org/](https://tryhaskell.org/) developed by Chris Done.
+## Haskell Playground
+Execute simple code snippets online in a browser.
+
+* Simple Haskell code-snippets can be tried in the browser at [https://tryhaskell.org](https://tryhaskell.org/) developed by Chris Done.
 * For Future Learn FP MOOC, instructors have developed [https://www.haskellmooc.co.uk](https://www.haskellmooc.co.uk), by extending the excellent "Try Haskell".
 
 ------
@@ -64,3 +66,4 @@ If you like a "Head First" series kinda book, entertaining [but a bit old] take 
 ## More Info
 * A lot more info on a number of resources for learning Haskell can be found on [HaskellWiki Portal](https://wiki.haskell.org/Learning_Haskell).
 
+------

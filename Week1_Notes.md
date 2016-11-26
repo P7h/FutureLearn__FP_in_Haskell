@@ -4,6 +4,7 @@
 ```
 Haskell is a purely functional, lazily evaluated, statically typed programming language with type inference.
 ```
+------
 
 ## Contents
 * [Haskell Basics](#haskell-basics)
@@ -27,6 +28,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 * [Install Haskell](#install-haskell)
 * [Recommended reading](#recommended-reading)
 
+------
 
 ## Haskell Basics
 ### Expressions
@@ -95,8 +97,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 * HOFs take other functions as arguments and may also return other functions.
 
     ```haskell
-    map (\x -> x*2) [1..10]
-    [2,4,6,8,10,12,14,16,18,20]
+    map (\x -> x*2) [1..10] -- >2,4,6,8,10,12,14,16,18,20]
     ```
 
 * More info on the example Higher-order function:
@@ -136,6 +137,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 * `4+-3` will fail as Haskell thinks you wanted to use a special operation '+-', so it should be written as `4+(-3)`.
     * Same is the case with `abs (-3)`; this should not be written as `abs -3`.
 
+------
 
 ## Haskell More Basics
 ### Blocks
@@ -183,6 +185,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
         (x:xs)  -> (2 * x) : (double xs)
     ```
 
+------
 
 ## Reduction, Functions and Lists
 ### Reduction
@@ -220,14 +223,14 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 
     ```haskell
     minmax = \x y -> [min x y, max x y]
-    minmax 3 8  == [3,8]
-    minmax 8 3  == [3,8]
+    minmax 3 8  -- > [3,8]
+    minmax 8 3  -- > [3,8]
     ```
 * Lazy evaluation: Elements / expressions are evaluated lazily. As long as the expression is not accessed, it is not evaluated.
 
     ```haskell
     let xs = [0..]      -- doesn’t throw out of memory
-    xs !! 100 == 100    -- we can access any element in the list defined
+    xs !! 100 -- > 100    -- we can access any element in the list defined
     tail xs             -- This will continue to generate the numbers..........
     ```
 
@@ -235,7 +238,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     * `++`: to concat two lists
 
         ```haskell
-        [23, 29] ++ [48, 41, 44] == [23, 29, 48, 41, 44]
+        [23, 29] ++ [48, 41, 44] -- > [23, 29, 48, 41, 44]
         ```
 
         * If `xs` is a list, then
@@ -245,62 +248,66 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
             xs ++ [] == xs
             ```
     * `..`: sequence of items `[0..5]` gives `[0,1,2,3,4,5]`
-        * Sequences are not just limited to numbers. `['a'..'e'] == ['a','b','c','d','e']` which is actually same as `"abcde"` as any String in Haskell is basically a list of characters.
+        * Sequences are not just limited to numbers. `['a'..'e'] = ['a','b','c','d','e']` which is actually same as `"abcde"` as any String in Haskell is basically a list of characters.
         * Elements can start from any digit / character and consecutive elements can be incremented or decremented.
 
             ```haskell
-            [4,7..20]       == [4,7,10,13,16,19]        -- each subsequent element is incremented by 3
-            [10,7..(-13)]   == [10,7,4,1,-2,-5,-8,-11]  -- each subsequent element is decremented by 3
-            ['p','s'..'z']  == "psvy"                   -- for alphabets
-            ['x','s'..'m']  == "xsn"                    -- alphabets decrementing
-            ['$'..'*']      == "$%&'()*"                -- Even for special characters
-            [(-6)..2]       == [-6,-5,-4,-3,-2,-1,0,1,2]
+            [4,7..20]       -- > [4,7,10,13,16,19]        -- each subsequent element is incremented by 3
+            [10,7..(-13)]   -- > [10,7,4,1,-2,-5,-8,-11]  -- each subsequent element is decremented by 3
+            ['p','s'..'z']  -- > "psvy"                   -- for alphabets
+            ['x','s'..'m']  -- > "xsn"                    -- alphabets decrementing
+            ['$'..'*']      -- > "$%&'()*"                -- Even for special characters
+            [(-6)..2]       -- > [-6,-5,-4,-3,-2,-1,0,1,2]
             ```
 
     * List comprehensions in Haskell were inspired by the mathematical notation set comprehension.
 
         ```haskell
-        [3*x | x <- [1..10]] == [3,6,9,12,15,18,21,24,27,30]
+        [3*x | x <- [1..10]] -- > [3,6,9,12,15,18,21,24,27,30]
         ```
 
 * Operating on lists
     * `!!`: index a list by numbering the elements, starting with 0.
-        * value at a specific index `['a'..'z'] !! 13 == n`
+        * value at a specific index `['a'..'z'] !! 13 -- > n`
     * `head`: first element of list
 
         ```haskell
-        head [1..10] == 1
+        head [1..10] -- > 1
         ```
     * `tail`: entire list except for the first element
 
         ```haskell
-        tail [1..10]    == [2,3,4,5,6,7,8,9,10]
-        tail ['m'..'r'] == "nopqr"
+        tail [1..10]    -- > [2,3,4,5,6,7,8,9,10]
+        tail ['m'..'r'] -- > "nopqr"
         ```
     * `init`: entire list except for the last element
 
         ```haskell
-        init [1..10] == [1,2,3,4,5,6,7,8,9]
+        init [1..10] -- > [1,2,3,4,5,6,7,8,9]
         ```
     * `last`: last element of the list
 
         ```haskell
-        last [1..10]        == 10
-        last ['x','s'..'m'] == 'm'
+        last [1..10]        -- > 10
+        last ['x','s'..'m'] -- > 'm'
         ```
 
+------
 
 ## Try Haskell online
 * Haskell can be tried in the browser at [https://www.haskellmooc.co.uk](https://www.haskellmooc.co.uk).
 * This website was actually created by extending the excellent "Try Haskell" developed by Chris Done: [https://tryhaskell.org/](https://tryhaskell.org/).
 
+------
 
 ## Install Haskell
 * Haskell compiler / interpreter can be installed using [Haskell Platform](https://www.haskell.org/platform).
 
 >> Note: Though this course advices to install Haskell Platform, it is better to install [`Stack`](http://www.haskellstack.org/). Please look for the installation instructions and documentation on [Stack website](https://docs.haskellstack.org/en/stable/README/#how-to-install).
 
+------
 
 ## Recommended reading
 * Please check [`Haskell Learning Resources`](Haskell_Learning_Resources.md) for detailed list of resources for learning Haskell.
 
+------
