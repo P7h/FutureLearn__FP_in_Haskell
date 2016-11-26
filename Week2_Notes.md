@@ -25,16 +25,16 @@
 * `elem` function returns true if a value is part of a list, and false otherwise.
 
 ```haskell
-elem 1 [1,2,3] -- > True
+elem 1 [1,2,3]  -- > True
 ```
 
 ### Using infix and prefix operations
 * Haskell permits any two-argument function to be written as an infix operator using backquote (`) characters.
 
 ```haskell
-1 `elem` [1,2,3] -- > True
-42 `max` 13 -- > 42
-(+) 1 1 -- > 2
+1 `elem` [1,2,3]    -- > True
+42 `max` 13         -- > 42
+(+) 1 1             -- > 2
 ```
 
 ------
@@ -43,35 +43,35 @@ elem 1 [1,2,3] -- > True
 * The `not` function returns the opposite boolean value, the logical complement.
 
 ```haskell
-not True        -- > False
-not (not False) -- > False
+not True            -- > False
+not (not False)     -- > False
 ```
 * `&&` infix operator is a boolean conjunction (`AND` function).
 
 ```haskell
-True && True    -- > True
-False && True   -- > False
+True && True        -- > True
+False && True       -- > False
 ```
 
 * `||` infix operator is a boolean disjunction (logical `OR`); dual of the `AND` operation.
 
 ```haskell
-True || False   -- > True
-False || False  -- > False
+True || False       -- > True
+False || False      -- > False
 ```
 
 * `xor` function returns true when its two boolean arguments are different.
 
 ```haskell
-True `xor` False    -- > True
-False `xor` False   -- > False
+True `xor` False        -- > True
+False `xor` False       -- > False
 ```
 
 * Haskell supports multi-input boolean operations with `and` and `or` functions that take a list of boolean values as a single input.
 
 ```haskell
-and [False, True, False, True]  -- > False
-or [True, True, False]          -- > True
+and [False, True, False, True]      -- > False
+or [True, True, False]              -- > True
 ```
 
 * `if` expressions evaluate to either the `then` value or the `else` value, based on the `if` value.
@@ -94,10 +94,10 @@ if True then 42 else pi             -- > 42.0
     * `zipWith` function can take a lambda function for the operation.
 
 ```haskell
-zip [1,2,3] [4,5]                       -- > [(1,4),(2,5)]
-zipWith max [1,2,3] [0,2,4]             -- > [1,2,4]
-zipWith (+) [1,2,3] [0,2,4]             -- > [1,4,7]
-zipWith (\x->(\y->(x,y))) [1,2,3] "abc" -- > [(1,'a'),(2,'b'),(3,'c')]    -- Note: Strings in Haskell are list of characters
+zip [1,2,3] [4,5]                           -- > [(1,4),(2,5)]
+zipWith max [1,2,3] [0,2,4]                 -- > [1,2,4]
+zipWith (+) [1,2,3] [0,2,4]                 -- > [1,4,7]
+zipWith (\x->(\y->(x,y))) [1,2,3] "abc"     -- > [(1,'a'),(2,'b'),(3,'c')]    -- Note: Strings in Haskell are list of characters
 ```
 
 ------
@@ -115,15 +115,15 @@ zipWith (\x->(\y->(x,y))) [1,2,3] "abc" -- > [(1,'a'),(2,'b'),(3,'c')]    -- Not
 * `print` does the composition of `putStrLn` and `show`.
 
 ```haskell
-putStrLn ("hello " ++ "world" ++ "!!") -- > "hello world!!" -- :: String
+putStrLn ("hello " ++ "world" ++ "!!")  -- > "hello world!!" -- :: String
 do {
     putStrLn "what is your name?"
     x <- getLine
     putStrLn ("hello " ++ x)
 }
-read "42" :: Int  -- > 42     -- :: Int
-show 42 -- > "42"             -- :: String
-print 42 -- > 42              -- :: IO ()
+read "42" :: Int                        -- > 42     -- :: Int
+show 42                                 -- > "42"             -- :: String
+print 42                                -- > 42              -- :: IO ()
 ```
 
 ------

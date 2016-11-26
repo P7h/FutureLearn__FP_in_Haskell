@@ -44,7 +44,7 @@ length (x:xs)   = 1 + length xs     # recursion case
 * Example:
 
 ```haskell
-length [1..10]  -- > 10
+length [1..10]      -- > 10
 ```
 
 #### `filter` function
@@ -57,7 +57,7 @@ filter :: (a->Bool) -> [a] -> [a]
 * Example:
 
 ```haskell
-filter (<5) [3,9,2,12,6,4] -- > [3,2,4]
+filter (<5) [3,9,2,12,6,4]      -- > [3,2,4]
 ```
 
 * Recursive definition of `filter`:
@@ -93,7 +93,7 @@ filter pred (x:xs)
 * `map` applies a function to every element of a list.
 
 ```haskell
-map f [x0,x1,x2] -- > [f x0, f x1, f x2]
+map f [x0,x1,x2]    -- > [f x0, f x1, f x2]
 ```
 
 * Common style is to define a set of simple computations using `map`, and to compose them.
@@ -132,13 +132,13 @@ foldl f z0 xs0 = lgo z0 xs0
 * Example of `foldl` function with `(+)` as infix function:
 
 ```haskell
-foldl (+) z [x0,x1,x2]  -- > ((z + x0) + x1) + x2
+foldl (+) z [x0,x1,x2]      -- > ((z + x0) + x1) + x2
 ```
 
 * Or `foldl` function can be summarized as:
 
 ```haskell
-foldl f z [x0,x1,x2]  -- > f (f (f z x0) x1) x2
+foldl f z [x0,x1,x2]        -- > f (f (f z x0) x1) x2
 ```
 
 #### Right fold: `foldr`
@@ -159,19 +159,19 @@ foldr k z = go
 * Example of `foldr` function with `(+)` as infix function:
 
 ```haskell
-foldr (+) z [x0,x1,x2]  -- > x0 + (x1 + (x2 + z))
+foldr (+) z [x0,x1,x2]      -- > x0 + (x1 + (x2 + z))
 ```
 
 * Or `foldr` function can be summarized as:
 
 ```haskell
-foldr f z [x0,x1,x2]  -- > f x0 (f x1 (f x2 z))
+foldr f z [x0,x1,x2]        -- > f x0 (f x1 (f x2 z))
 ```
 
 * A list can be constructed with `foldr` as `foldr cons [] xs = xs`.
 
 ```haskell
-foldr (:) [] [x0,x1,x2]    -- > x0 :  x1 : x2 : []
+foldr (:) [] [x0,x1,x2]     -- > x0 :  x1 : x2 : []
 ```
 
 * Examples of `foldr`:
@@ -201,13 +201,13 @@ accl = foldl g 1 lst    -- > ((((((((((1 / 1) / 2) / 3) / 4) / 5) / 6) / 7) / 8)
 
 -- foldr
 g' = (/)
-accr = foldr g' 1 lst    -- > 1 / (2 / (3 / (4 / (5 / (6 / (7 / (8 / (9 / (10 / 1))))))))) = 0.24609375
+accr = foldr g' 1 lst   -- > 1 / (2 / (3 / (4 / (5 / (6 / (7 / (8 / (9 / (10 / 1))))))))) = 0.24609375
 
 -- main
 main = do
-    print lst_  -- > [2.0,6.0,12.0,20.0,30.0,42.0,56.0,72.0,90.0,110.0]
-    print accl  -- > 2.7557319223985894e-7
-    print accr  -- > 0.24609375
+    print lst_          -- > [2.0,6.0,12.0,20.0,30.0,42.0,56.0,72.0,90.0,110.0]
+    print accl          -- > 2.7557319223985894e-7
+    print accr          -- > 0.24609375
 ```
 
 #### Summary of Map and Folds
@@ -242,10 +242,10 @@ let convert 1 = One
     convert 2 = Two
     convert _ = Many
 
-:t One              -- > One :: SimpleNum
-convert 1           -- > One
-convert 50          -- > Many
-map convert [1..5]  -- > [One, Two, Many, Many, Many]
+:t One                  -- > One :: SimpleNum
+convert 1               -- > One
+convert 50              -- > Many
+map convert [1..5]      -- > [One, Two, Many, Many, Many]
 ```
 
 #### Record or Product Data Type
@@ -256,7 +256,7 @@ map convert [1..5]  -- > [One, Two, Many, Many, Many]
 data CricketScore = Score [Char] Int Int deriving Show
 let x = Score "England" 255 10
 
-:t x                -- > CricketScore
+:t x                    -- > CricketScore
 ```
 
 ### Type Classes
@@ -277,8 +277,8 @@ let x = Score "England" 255 10
 data SimpleNum = One | Two | Many deriving (Eq, Ord, Show, Read)
 
 -- Show
-show One                   -- > "One"
-show Many                  -- > "Many"
+show One                    -- > "One"
+show Many                   -- > "Many"
 
 -- Read
 read "One" :: SimpleNum     -- > One

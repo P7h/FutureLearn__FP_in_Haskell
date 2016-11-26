@@ -97,7 +97,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 * HOFs take other functions as arguments and may also return other functions.
 
     ```haskell
-    map (\x -> x*2) [1..10] -- >2,4,6,8,10,12,14,16,18,20]
+    map (\x -> x*2) [1..10]     -- > 2,4,6,8,10,12,14,16,18,20]
     ```
 
 * More info on the example Higher-order function:
@@ -229,16 +229,16 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 * Lazy evaluation: Elements / expressions are evaluated lazily. As long as the expression is not accessed, it is not evaluated.
 
     ```haskell
-    let xs = [0..]      -- doesn’t throw out of memory
-    xs !! 100 -- > 100    -- we can access any element in the list defined
-    tail xs             -- This will continue to generate the numbers..........
+    let xs = [0..]              -- doesn’t throw out of memory
+    xs !! 100       -- > 100    -- we can access any element in the list defined
+    tail xs                     -- This will continue to generate the numbers......
     ```
 
 * Constructing lists:
     * `++`: to concat two lists
 
         ```haskell
-        [23, 29] ++ [48, 41, 44] -- > [23, 29, 48, 41, 44]
+        [23, 29] ++ [48, 41, 44]    -- > [23, 29, 48, 41, 44]
         ```
 
         * If `xs` is a list, then
@@ -263,7 +263,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     * List comprehensions in Haskell were inspired by the mathematical notation set comprehension.
 
         ```haskell
-        [3*x | x <- [1..10]] -- > [3,6,9,12,15,18,21,24,27,30]
+        [3*x | x <- [1..10]]    -- > [3,6,9,12,15,18,21,24,27,30]
         ```
 
 * Operating on lists
@@ -272,24 +272,24 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     * `head`: first element of list
 
         ```haskell
-        head [1..10] -- > 1
+        head [1..10]            -- > 1
         ```
     * `tail`: entire list except for the first element
 
         ```haskell
-        tail [1..10]    -- > [2,3,4,5,6,7,8,9,10]
-        tail ['m'..'r'] -- > "nopqr"
+        tail [1..10]            -- > [2,3,4,5,6,7,8,9,10]
+        tail ['m'..'r']         -- > "nopqr"
         ```
     * `init`: entire list except for the last element
 
         ```haskell
-        init [1..10] -- > [1,2,3,4,5,6,7,8,9]
+        init [1..10]            -- > [1,2,3,4,5,6,7,8,9]
         ```
     * `last`: last element of the list
 
         ```haskell
-        last [1..10]        -- > 10
-        last ['x','s'..'m'] -- > 'm'
+        last [1..10]            -- > 10
+        last ['x','s'..'m']     -- > 'm'
         ```
 
 ------

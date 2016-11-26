@@ -768,7 +768,7 @@ pre {
 <code>elem</code> function returns true if a value is part of a list, and false otherwise.</li>
 </ul>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">elem</span> <span class="pl-c1">1</span> [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>] <span class="pl-c">-- &gt; True</span></pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">elem</span> <span class="pl-c1">1</span> [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]  <span class="pl-c">-- &gt; True</span></pre></div>
 
 <h3>
 <a id="using-infix-and-prefix-operations" class="anchor" href="#using-infix-and-prefix-operations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using infix and prefix operations</h3>
@@ -777,9 +777,9 @@ pre {
 <li>Haskell permits any two-argument function to be written as an infix operator using backquote (`) characters.</li>
 </ul>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">1</span> <span class="pl-k">`elem`</span> [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>] <span class="pl-c">-- &gt; True</span>
-<span class="pl-c1">42</span> <span class="pl-k">`max`</span> <span class="pl-c1">13</span> <span class="pl-c">-- &gt; 42</span>
-(+) <span class="pl-c1">1</span> <span class="pl-c1">1</span> <span class="pl-c">-- &gt; 2</span></pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">1</span> <span class="pl-k">`elem`</span> [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]    <span class="pl-c">-- &gt; True</span>
+<span class="pl-c1">42</span> <span class="pl-k">`max`</span> <span class="pl-c1">13</span>         <span class="pl-c">-- &gt; 42</span>
+(+) <span class="pl-c1">1</span> <span class="pl-c1">1</span>             <span class="pl-c">-- &gt; 2</span></pre></div>
 
 <hr>
 
@@ -790,39 +790,39 @@ pre {
 <li>The <code>not</code> function returns the opposite boolean value, the logical complement.</li>
 </ul>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">not</span> <span class="pl-ent"><span class="pl-c1">True</span></span>        <span class="pl-c">-- &gt; False</span>
-<span class="pl-c1">not</span> (<span class="pl-c1">not</span> <span class="pl-ent"><span class="pl-c1">False</span></span>) <span class="pl-c">-- &gt; False</span></pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">not</span> <span class="pl-ent"><span class="pl-c1">True</span></span>            <span class="pl-c">-- &gt; False</span>
+<span class="pl-c1">not</span> (<span class="pl-c1">not</span> <span class="pl-ent"><span class="pl-c1">False</span></span>)     <span class="pl-c">-- &gt; False</span></pre></div>
 
 <ul>
 <li>
 <code>&amp;&amp;</code> infix operator is a boolean conjunction (<code>AND</code> function).</li>
 </ul>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-ent"><span class="pl-c1">True</span></span> &amp;&amp; <span class="pl-ent"><span class="pl-c1">True</span></span>    <span class="pl-c">-- &gt; True</span>
-<span class="pl-ent"><span class="pl-c1">False</span></span> &amp;&amp; <span class="pl-ent"><span class="pl-c1">True</span></span>   <span class="pl-c">-- &gt; False</span></pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-ent"><span class="pl-c1">True</span></span> &amp;&amp; <span class="pl-ent"><span class="pl-c1">True</span></span>        <span class="pl-c">-- &gt; True</span>
+<span class="pl-ent"><span class="pl-c1">False</span></span> &amp;&amp; <span class="pl-ent"><span class="pl-c1">True</span></span>       <span class="pl-c">-- &gt; False</span></pre></div>
 
 <ul>
 <li>
 <code>||</code> infix operator is a boolean disjunction (logical <code>OR</code>); dual of the <code>AND</code> operation.</li>
 </ul>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-ent"><span class="pl-c1">True</span></span> || <span class="pl-ent"><span class="pl-c1">False</span></span>   <span class="pl-c">-- &gt; True</span>
-<span class="pl-ent"><span class="pl-c1">False</span></span> || <span class="pl-ent"><span class="pl-c1">False</span></span>  <span class="pl-c">-- &gt; False</span></pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-ent"><span class="pl-c1">True</span></span> || <span class="pl-ent"><span class="pl-c1">False</span></span>       <span class="pl-c">-- &gt; True</span>
+<span class="pl-ent"><span class="pl-c1">False</span></span> || <span class="pl-ent"><span class="pl-c1">False</span></span>      <span class="pl-c">-- &gt; False</span></pre></div>
 
 <ul>
 <li>
 <code>xor</code> function returns true when its two boolean arguments are different.</li>
 </ul>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-ent"><span class="pl-c1">True</span></span> <span class="pl-k">`xor`</span> <span class="pl-ent"><span class="pl-c1">False</span></span>    <span class="pl-c">-- &gt; True</span>
-<span class="pl-ent"><span class="pl-c1">False</span></span> <span class="pl-k">`xor`</span> <span class="pl-ent"><span class="pl-c1">False</span></span>   <span class="pl-c">-- &gt; False</span></pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-ent"><span class="pl-c1">True</span></span> <span class="pl-k">`xor`</span> <span class="pl-ent"><span class="pl-c1">False</span></span>        <span class="pl-c">-- &gt; True</span>
+<span class="pl-ent"><span class="pl-c1">False</span></span> <span class="pl-k">`xor`</span> <span class="pl-ent"><span class="pl-c1">False</span></span>       <span class="pl-c">-- &gt; False</span></pre></div>
 
 <ul>
 <li>Haskell supports multi-input boolean operations with <code>and</code> and <code>or</code> functions that take a list of boolean values as a single input.</li>
 </ul>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">and</span> [<span class="pl-ent"><span class="pl-c1">False</span></span>, <span class="pl-ent"><span class="pl-c1">True</span></span>, <span class="pl-ent"><span class="pl-c1">False</span></span>, <span class="pl-ent"><span class="pl-c1">True</span></span>]  <span class="pl-c">-- &gt; False</span>
-<span class="pl-c1">or</span> [<span class="pl-ent"><span class="pl-c1">True</span></span>, <span class="pl-ent"><span class="pl-c1">True</span></span>, <span class="pl-ent"><span class="pl-c1">False</span></span>]          <span class="pl-c">-- &gt; True</span></pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">and</span> [<span class="pl-ent"><span class="pl-c1">False</span></span>, <span class="pl-ent"><span class="pl-c1">True</span></span>, <span class="pl-ent"><span class="pl-c1">False</span></span>, <span class="pl-ent"><span class="pl-c1">True</span></span>]      <span class="pl-c">-- &gt; False</span>
+<span class="pl-c1">or</span> [<span class="pl-ent"><span class="pl-c1">True</span></span>, <span class="pl-ent"><span class="pl-c1">True</span></span>, <span class="pl-ent"><span class="pl-c1">False</span></span>]              <span class="pl-c">-- &gt; True</span></pre></div>
 
 <ul>
 <li>
@@ -861,10 +861,10 @@ pre {
 </li>
 </ul>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">zip</span> [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>] [<span class="pl-c1">4</span>,<span class="pl-c1">5</span>]                       <span class="pl-c">-- &gt; [(1,4),(2,5)]</span>
-<span class="pl-c1">zipWith</span> <span class="pl-c1">max</span> [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>] [<span class="pl-c1">0</span>,<span class="pl-c1">2</span>,<span class="pl-c1">4</span>]             <span class="pl-c">-- &gt; [1,2,4]</span>
-<span class="pl-c1">zipWith</span> (+) [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>] [<span class="pl-c1">0</span>,<span class="pl-c1">2</span>,<span class="pl-c1">4</span>]             <span class="pl-c">-- &gt; [1,4,7]</span>
-<span class="pl-c1">zipWith</span> (\x-&gt;(\y-&gt;(x,y))) [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>] <span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span> <span class="pl-c">-- &gt; [(1,'a'),(2,'b'),(3,'c')]    -- Note: Strings in Haskell are list of characters</span></pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">zip</span> [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>] [<span class="pl-c1">4</span>,<span class="pl-c1">5</span>]                           <span class="pl-c">-- &gt; [(1,4),(2,5)]</span>
+<span class="pl-c1">zipWith</span> <span class="pl-c1">max</span> [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>] [<span class="pl-c1">0</span>,<span class="pl-c1">2</span>,<span class="pl-c1">4</span>]                 <span class="pl-c">-- &gt; [1,2,4]</span>
+<span class="pl-c1">zipWith</span> (+) [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>] [<span class="pl-c1">0</span>,<span class="pl-c1">2</span>,<span class="pl-c1">4</span>]                 <span class="pl-c">-- &gt; [1,4,7]</span>
+<span class="pl-c1">zipWith</span> (\x-&gt;(\y-&gt;(x,y))) [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>] <span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>     <span class="pl-c">-- &gt; [(1,'a'),(2,'b'),(3,'c')]    -- Note: Strings in Haskell are list of characters</span></pre></div>
 
 <hr>
 
@@ -903,15 +903,15 @@ pre {
 <code>print</code> does the composition of <code>putStrLn</code> and <code>show</code>.</li>
 </ul>
 
-<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">putStrLn</span> (<span class="pl-s"><span class="pl-pds">"</span>hello <span class="pl-pds">"</span></span> ++ <span class="pl-s"><span class="pl-pds">"</span>world<span class="pl-pds">"</span></span> ++ <span class="pl-s"><span class="pl-pds">"</span>!!<span class="pl-pds">"</span></span>) <span class="pl-c">-- &gt; "hello world!!" -- :: String</span>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">putStrLn</span> (<span class="pl-s"><span class="pl-pds">"</span>hello <span class="pl-pds">"</span></span> ++ <span class="pl-s"><span class="pl-pds">"</span>world<span class="pl-pds">"</span></span> ++ <span class="pl-s"><span class="pl-pds">"</span>!!<span class="pl-pds">"</span></span>)  <span class="pl-c">-- &gt; "hello world!!" -- :: String</span>
 <span class="pl-k">do</span> {
     <span class="pl-c1">putStrLn</span> <span class="pl-s"><span class="pl-pds">"</span>what is your name?<span class="pl-pds">"</span></span>
     x &lt;- <span class="pl-c1">getLine</span>
     <span class="pl-c1">putStrLn</span> (<span class="pl-s"><span class="pl-pds">"</span>hello <span class="pl-pds">"</span></span> ++ x)
 }
-<span class="pl-c1">read</span> <span class="pl-s"><span class="pl-pds">"</span>42<span class="pl-pds">"</span></span> <span class="pl-k">::</span> <span class="pl-en"><span class="pl-c1">Int</span></span>  <span class="pl-c">-- &gt; 42     -- :: Int</span>
-<span class="pl-c1">show</span> <span class="pl-c1">42</span> <span class="pl-c">-- &gt; "42"             -- :: String</span>
-<span class="pl-c1">print</span> <span class="pl-c1">42</span> <span class="pl-c">-- &gt; 42              -- :: IO ()</span></pre></div>
+<span class="pl-c1">read</span> <span class="pl-s"><span class="pl-pds">"</span>42<span class="pl-pds">"</span></span> <span class="pl-k">::</span> <span class="pl-en"><span class="pl-c1">Int</span></span>                        <span class="pl-c">-- &gt; 42     -- :: Int</span>
+<span class="pl-c1">show</span> <span class="pl-c1">42</span>                                 <span class="pl-c">-- &gt; "42"             -- :: String</span>
+<span class="pl-c1">print</span> <span class="pl-c1">42</span>                                <span class="pl-c">-- &gt; 42              -- :: IO ()</span></pre></div>
 
 <hr>
 
