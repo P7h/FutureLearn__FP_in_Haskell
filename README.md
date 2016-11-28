@@ -14,7 +14,7 @@ Though there were quizzes on every important topic, there were no hands-on exerc
 - [x]  2. [Week 2: "Haskell Building Blocks"](Week2_Notes.md)
 - [x]  3. [Week 3: "Data Structures And Types"](Week3_Notes.md)
 - [x]  4. [Week 4: "When Programs Get Bigger"](Week4_Notes.md)
-- [ ]  5. Week 5: "Hardcore Haskell"
+- [x]  5. Week 5: ["Hardcore Haskell"](Week5_Notes.md)
 - [ ]  6. Week 6: "Think Like A Functional Programmer"
 
 I also created a note on all the available resources for learning Haskell.

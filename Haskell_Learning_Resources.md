@@ -4,10 +4,9 @@
 
 This page lists all Haskell learning resources I came across during my learning process late 2016.
 
-All the corresponding resources have been listed in the descending order of the priority _as per my [limited] knowledge_.
-
+## Contents
 * [Books](#books)
-* [MOOCs](#moocs)
+* [Massive Open Online Courses (MOOCs)](#massive-open-online-courses-moocs)
 * [University lectures and recordings](#university-lectures-and-recordings)
 * [Haskell Playground](#haskell-playground)
 * [More Info](#more-info)
@@ -20,16 +19,16 @@ All the corresponding resources have been listed in the descending order of the 
 * Richard Bird &raquo; [Thinking Functionally with Haskell](http://www.cambridge.org/gb/academic/subjects/computer-science/programming-languages-and-applied-logic/thinking-functionally-haskell)
     * Richard Bird & Philip Wadler &raquo; [Introduction Functional Programming, first edition](https://usi-pl.github.io/lc/sp-2015/doc/Bird_Wadler.%20Introduction%20to%20Functional%20Programming.1ed.pdf)
     * Richard Bird & Philip Wadler &raquo; [Introduction Functional Programming using Haskell, second edition](https://www.amazon.co.uk/Introduction-Functional-Programming-Prentice-Hall-Computer/dp/0134843460)
-* Bryan O'Sullivan, John Goerzen, & Don Stewart &raquo; [Real World Haskell](http://book.realworldhaskell.org/). Available for free online.
+* Bryan O'Sullivan, John Goerzen, & Don Stewart &raquo; [Real World Haskell](http://book.realworldhaskell.org/). Available for free to read online.
 * Simon Thompson &raquo; [Haskell: The Craft of Functional Programming, third edition](http://www.haskellcraft.com)
-* Simon Marlow &raquo; [Parallel and Concurrent Programming in Haskell](http://chimera.labs.oreilly.com/books/1230000000929). Available for free online.
-* GetContented &raquo; [Happy Learn Haskell](http://www.happylearnhaskelltutorial.com/). Available for free online.
-* Mark Watson &raquo; [Haskell Tutorial and Cookbook](https://leanpub.com/haskell-cookbook/). Available for free online.
+* Simon Marlow &raquo; [Parallel and Concurrent Programming in Haskell](http://chimera.labs.oreilly.com/books/1230000000929). Available for free to read online.
+* GetContented &raquo; [Happy Learn Haskell](http://www.happylearnhaskelltutorial.com/). Available for free to read online.
+* Mark Watson &raquo; [Haskell Tutorial and Cookbook](https://leanpub.com/haskell-cookbook/). Available for free to read online.
 
 
-If you like a "Head First" series kinda book, entertaining [but a bit old] take on Haskell, please check the below book. But my suggestion, please **_don't_** read this book.
+If you like a "Head First" series kinda book, please check the below book for an entertaining take on Haskell.
 
-* Miran Lipovača &raquo; [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/). Available for free online.
+* Miran Lipovača &raquo; [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/). Available for free to read online.
 
 ------
 
@@ -67,3 +66,7 @@ Execute simple code snippets online in a browser.
 * A lot more info on a number of resources for learning Haskell can be found on [HaskellWiki Portal](https://wiki.haskell.org/Learning_Haskell).
 
 ------
+
+## License
+Copyright &copy; 2016 Prashanth Babu.<br>
+Licensed under the [Apache License, Version 2.0](LICENSE).

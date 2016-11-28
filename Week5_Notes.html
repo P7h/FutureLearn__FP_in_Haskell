@@ -1,0 +1,372 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="styles.css">
+<title>Week5_Notes</title></head><body><article class="markdown-body"><h1>
+<a id="week5-notes-of-hardcore-haskell----functional-programming-in-haskell-mooc" class="anchor" href="#week5-notes-of-hardcore-haskell----functional-programming-in-haskell-mooc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Week5 Notes of "Hardcore Haskell" -- "Functional Programming in Haskell" MOOC</h1>
+
+<h2>
+<a id="contents" class="anchor" href="#contents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contents</h2>
+
+<ul>
+<li>
+<a href="#laziness-and-infinite-data-structures">Laziness and Infinite Data Structures</a>
+
+<ul>
+<li><a href="#lazy-evaluation">Lazy evaluation</a></li>
+<li><a href="#infinite-data-structures">Infinite Data Structures</a></li>
+</ul>
+</li>
+<li>
+<a href="#types-lambda-functions-and-type-classes">Types, lambda functions and type classes</a>
+
+<ul>
+<li><a href="#function-types">Function types</a></li>
+<li>
+<a href="#lambda-expressions">Lambda expressions</a>
+
+<ul>
+<li><a href="#monomorphic-functions">Monomorphic functions</a></li>
+<li><a href="#polymorphic-functions">Polymorphic functions</a></li>
+</ul>
+</li>
+<li>
+<a href="#currying">Currying</a>
+
+<ul>
+<li><a href="#partial-application">Partial Application</a></li>
+</ul>
+</li>
+<li>
+<a href="#polymorphism">Polymorphism</a>
+
+<ul>
+<li><a href="#parametric-polymorphism">Parametric polymorphism</a></li>
+<li><a href="#ad-hoc-polymorphism">Ad hoc polymorphism</a></li>
+</ul>
+</li>
+<li>
+<a href="#type-inference">Type inference</a>
+
+<ul>
+<li><a href="#type-inference-rules">Type inference rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#haskell-in-the-real-world">Haskell in the Real World</a></li>
+</ul>
+
+<hr>
+
+<h2>
+<a id="laziness-and-infinite-data-structures" class="anchor" href="#laziness-and-infinite-data-structures" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Laziness and Infinite Data Structures</h2>
+
+<h3>
+<a id="lazy-evaluation" class="anchor" href="#lazy-evaluation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lazy evaluation</h3>
+
+<table>
+<thead>
+<tr>
+<th><strong>Lazy evaluation</strong></th>
+<th><strong>Eager evaluation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Haskell</td>
+<td>Java</td>
+</tr>
+<tr>
+<td>.NET System.Lazy</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>Miranda</td>
+<td>ML</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Haskell is a <em>lazy</em> language.
+
+<ul>
+<li>Evaluation of expressions is delayed until their values are actually needed.</li>
+<li>If computations are not needed, then they won't be evaluated. Or in other words: Only evaluate what is needed.</li>
+<li>We can have inifinite data structures.</li>
+</ul>
+</li>
+<li>In a lazy language, if a parameter value is never needed then the parameter is never evaluated.</li>
+<li>Take an example of <code>f(1 + 1)</code>:
+
+<ul>
+<li>In an eager language, the calculation is done when the function is invoked: <em>call by value</em>.</li>
+<li>In a lazy language, the calculation is only done when the parameter value is used in the function body: <em>call by need</em>.</li>
+</ul>
+</li>
+<li>Simplest non-terminating value is called bottom, written in mathematical notation <code>⊥</code> [ie <code>_</code> symbol below <code>\</code> symbol; also called <code>falsum</code>].
+
+<ul>
+<li>A function is strict in its argument if when we supply bottom as that argument the function fails to terminate.</li>
+</ul>
+</li>
+</ul>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-k">let</span> ones = <span class="pl-c1">1</span> : ones
+<span class="pl-c1">head</span> ones           <span class="pl-c">-- &gt; 1</span>
+<span class="pl-c1">tail</span> ones           <span class="pl-c">-- &gt; [1,1,1,.........]  -- does n't fail; but an infinite list</span>
+ones                <span class="pl-c">-- &gt; [1,1,1,.........]  -- does n't fail; but an infinite list</span></pre></div>
+
+<h3>
+<a id="infinite-data-structures" class="anchor" href="#infinite-data-structures" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Infinite Data Structures</h3>
+
+<ul>
+<li>We can compute with infinite data structures so long as we don't traverse the structure infinitely.
+
+<ul>
+<li>
+<code>take n xs</code>: gets only the specified number of elements from the list.</li>
+<li>
+<code>drop n xs</code>: drops the specified number of elements from the list and returns the rest of the list.</li>
+<li>
+<code>repeat a</code>: generates infinite list of elements [of item: <code>a</code>, which can be a number, char, etc]</li>
+</ul>
+</li>
+<li>Haskell can process infinite lists as it evaluates the lists in a lazy fashion — ie it only evaluates list elements as they are needed.</li>
+</ul>
+
+<div class="highlight highlight-source-haskell"><pre>[<span class="pl-c1">1</span>.<span class="pl-k">.]</span>               <span class="pl-c">-- &gt; [1,2,3,4,........]     -- an infinite list</span>
+<span class="pl-c1">take</span> <span class="pl-c1">3</span> ones         <span class="pl-c">-- &gt; [1,1,1]                -- a simple finite list</span>
+<span class="pl-c1">drop</span> <span class="pl-c1">3</span> ones         <span class="pl-c">-- &gt; [1,1,1,1,........]     -- does n't fail; but again an infinite list</span>
+<span class="pl-c1">repeat</span> <span class="pl-c1">1</span>            <span class="pl-c">-- &gt; [1,1,1,1,........]     -- an infinite list</span>
+
+<span class="pl-c">-- Fibonacci sequence</span>
+<span class="pl-k">let</span> fibs = <span class="pl-c1">1</span>:<span class="pl-c1">1</span>:(<span class="pl-c1">zipWith</span> (+) fibs (<span class="pl-c1">tail</span> fibs))   <span class="pl-c">-- &gt; 1, 1, 2, 3, 5, 8, 13, 21, ...</span>
+
+
+<span class="pl-c">-- To calculate an infinite list of prime numbers.</span>
+<span class="pl-en">properfactors</span> <span class="pl-k">::</span> <span class="pl-en"><span class="pl-c1">Int</span></span> <span class="pl-k">-&gt;</span> [<span class="pl-en"><span class="pl-c1">Int</span></span>]
+properfactors x = <span class="pl-c1">filter</span> (\y-&gt;(x <span class="pl-k">`mod`</span> y == <span class="pl-c1">0</span>)) [<span class="pl-c1">2</span>..(x-<span class="pl-c1">1</span><span class="pl-k">)]</span>
+
+<span class="pl-en">numproperfactors</span> <span class="pl-k">::</span> <span class="pl-en"><span class="pl-c1">Int</span></span> <span class="pl-k">-&gt;</span> <span class="pl-en"><span class="pl-c1">Int</span></span>
+numproperfactors x = <span class="pl-c1">length</span> (properfactors x)
+
+<span class="pl-en">primes</span> <span class="pl-k">::</span> [<span class="pl-en"><span class="pl-c1">Int</span></span>]
+primes = <span class="pl-c1">filter</span> (\x-&gt; (numproperfactors x == <span class="pl-c1">0</span>)) [<span class="pl-c1">2</span>.<span class="pl-k">.]</span></pre></div>
+
+<hr>
+
+<h2>
+<a id="types-lambda-functions-and-type-classes" class="anchor" href="#types-lambda-functions-and-type-classes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Types, lambda functions and type classes</h2>
+
+<h3>
+<a id="function-types" class="anchor" href="#function-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Function types</h3>
+
+<ul>
+<li>Functions have types containing an arrow, e.g. <code>Int -&gt; String</code>.</li>
+<li>Ordinary data types are for:
+
+<ul>
+<li>primitive data (like <code>Int</code> and <code>Char</code>) and</li>
+<li>basic data structures (like <code>[Int]</code> and <code>[Char]</code>).</li>
+</ul>
+</li>
+<li>Algebraic data types are types that combine other types either as:
+
+<ul>
+<li>records (<code>products</code>) or</li>
+<li>variants (<code>sums</code>)</li>
+</ul>
+</li>
+</ul>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c">-- records / products</span>
+<span class="pl-k">data</span> <span class="pl-en">Pair</span> <span class="pl-k">=</span> <span class="pl-ent">Pair</span> <span class="pl-en"><span class="pl-c1">Int</span></span> <span class="pl-en"><span class="pl-c1">Double</span></span>
+
+<span class="pl-c">-- variants / sums</span>
+<span class="pl-k">data</span> <span class="pl-en"><span class="pl-c1">Bool</span></span> <span class="pl-k">=</span> <span class="pl-ent"><span class="pl-c1">False</span></span> | <span class="pl-ent"><span class="pl-c1">True</span></span></pre></div>
+
+<h3>
+<a id="lambda-expressions" class="anchor" href="#lambda-expressions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lambda expressions</h3>
+
+<ul>
+<li>A lambda expression <code>\x -&gt; e</code> contains:
+
+<ul>
+<li>An explicit statement that the formal parameter is <code>x</code>, and</li>
+<li>The expression <code>e</code> that defines the value of the function.</li>
+</ul>
+</li>
+<li>Since functions are "first class", they are ubiquitous, and it’s often useful to denote a function anonymously using <em>lambda expressions</em>.</li>
+<li>The following lambda expression is read as: "lambda x arrow x+1".</li>
+</ul>
+
+<div class="highlight highlight-source-haskell"><pre>\x -&gt; x + <span class="pl-c1">1</span></pre></div>
+
+<ul>
+<li>Lambda expressions are most useful when they appear inside larger expressions.</li>
+</ul>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-c1">map</span> (\x -&gt; <span class="pl-c1">2</span> * x) xs    <span class="pl-c">-- &gt; each element of the list is doubled.</span></pre></div>
+
+<h4>
+<a id="monomorphic-functions" class="anchor" href="#monomorphic-functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Monomorphic functions</h4>
+
+<ul>
+<li>Monomorphic functions: having one form.</li>
+</ul>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-en">f</span> <span class="pl-k">::</span> <span class="pl-en"><span class="pl-c1">Int</span></span> <span class="pl-k">-&gt;</span> <span class="pl-en"><span class="pl-c1">Char</span></span>
+f i = <span class="pl-s"><span class="pl-pds">"</span>abcdefghijklmnopqrstuvwxyz<span class="pl-pds">"</span></span> !! i
+
+<span class="pl-en">x</span> <span class="pl-k">::</span> <span class="pl-en"><span class="pl-c1">Int</span></span>
+x = <span class="pl-c1">3</span>
+
+f x <span class="pl-k">::</span> <span class="pl-en"><span class="pl-c1">Char</span></span>
+f x <span class="pl-c">-- &gt; 'd'</span></pre></div>
+
+<h4>
+<a id="polymorphic-functions" class="anchor" href="#polymorphic-functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Polymorphic functions</h4>
+
+<ul>
+<li>Polymorphic functions: having many forms.</li>
+</ul>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-en">fst</span> <span class="pl-k">::</span> (<span class="pl-smi">a</span>,<span class="pl-smi">b</span>) <span class="pl-k">-&gt;</span> <span class="pl-smi">a</span>
+<span class="pl-c1">fst</span> (x,y) = x
+
+<span class="pl-en">snd</span> <span class="pl-k">::</span> (<span class="pl-smi">a</span>,<span class="pl-smi">b</span>) <span class="pl-k">-&gt;</span> <span class="pl-smi">b</span>
+<span class="pl-c1">snd</span> (x,y) = y</pre></div>
+
+<h3>
+<a id="currying" class="anchor" href="#currying" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Currying</h3>
+
+<ul>
+<li>Currying is in the honor of Haskell Curry; but concept was actually proposed originally by another logician, Moses Schönfinkel.</li>
+<li>Currying is a technique of rewriting a function of multiple arguments into a sequence of functions with a single argument.</li>
+<li>Functions can be restricted to have just one argument, <em>without losing any expressiveness</em>.
+
+<ul>
+<li>The technique makes essential use of higher order functions.</li>
+<li>It has many advantages, both practical and theoretical.</li>
+</ul>
+</li>
+</ul>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-en">f</span> <span class="pl-k">::</span> <span class="pl-en"><span class="pl-c1">Int</span></span> <span class="pl-k">-&gt;</span> <span class="pl-en"><span class="pl-c1">Int</span></span> <span class="pl-k">-&gt;</span> <span class="pl-en"><span class="pl-c1">Int</span></span>
+f x y = <span class="pl-c1">2</span>*x + y
+
+<span class="pl-en">f</span> <span class="pl-k">::</span> <span class="pl-en"><span class="pl-c1">Int</span></span> <span class="pl-k">-&gt;</span> (<span class="pl-en"><span class="pl-c1">Int</span></span> <span class="pl-k">-&gt;</span> <span class="pl-en"><span class="pl-c1">Int</span></span>)
+f <span class="pl-c1">5</span> <span class="pl-k">::</span> <span class="pl-en"><span class="pl-c1">Int</span></span> <span class="pl-k">-&gt;</span> <span class="pl-en"><span class="pl-c1">Int</span></span>
+
+f <span class="pl-c1">3</span> <span class="pl-c1">4</span> = (f <span class="pl-c1">3</span>) <span class="pl-c1">4</span>
+
+<span class="pl-en">g</span> <span class="pl-k">::</span> <span class="pl-en"><span class="pl-c1">Int</span></span> <span class="pl-k">-&gt;</span> <span class="pl-en"><span class="pl-c1">Int</span></span>
+g = f <span class="pl-c1">3</span>
+g <span class="pl-c1">10</span>            <span class="pl-c">-- &gt; (f 3) 10 -- &gt; 2*3 + 10</span></pre></div>
+
+<ul>
+<li>The arrow operator takes two types: <code>a -&gt; b</code>, and gives the type of a function with argument type <code>a</code> and result type <code>b</code>.</li>
+<li>Arrows group to the right, and application groups to the left.</li>
+</ul>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-en">f</span> <span class="pl-k">::</span> <span class="pl-smi">a</span> <span class="pl-k">-&gt;</span> <span class="pl-smi">b</span> <span class="pl-k">-&gt;</span> <span class="pl-smi">c</span> <span class="pl-k">-&gt;</span> <span class="pl-smi">d</span>
+<span class="pl-en">f</span> <span class="pl-k">::</span> <span class="pl-smi">a</span> <span class="pl-k">-&gt;</span> (<span class="pl-smi">b</span> <span class="pl-k">-&gt;</span> (<span class="pl-smi">c</span> <span class="pl-k">-&gt;</span> <span class="pl-smi">d</span>))
+
+f x y z = ((f x) y) z</pre></div>
+
+<h4>
+<a id="partial-application" class="anchor" href="#partial-application" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Partial Application</h4>
+
+<ul>
+<li>Currying means rewriting a function of more than one argument to a sequence of functions, each with a single argument.</li>
+<li>The arrow <code>-&gt;</code> is right-associative, so the following 2 function signatures are exactly same.
+
+<ul>
+<li>In the second function signature, <code>f</code> is a function with a single argument of type <code>X</code> which returns a function of type <code>Y -&gt; Z -&gt; A</code>.</li>
+</ul>
+</li>
+</ul>
+
+<div class="highlight highlight-source-haskell"><pre><span class="pl-en">f</span> <span class="pl-k">::</span> <span class="pl-en">X</span> <span class="pl-k">-&gt;</span> <span class="pl-en">Y</span> <span class="pl-k">-&gt;</span> <span class="pl-en">Z</span> <span class="pl-k">-&gt;</span> <span class="pl-en">A</span>
+<span class="pl-en">f</span> <span class="pl-k">::</span> <span class="pl-en">X</span> <span class="pl-k">-&gt;</span> (<span class="pl-en">Y</span> <span class="pl-k">-&gt;</span> (<span class="pl-en">Z</span> <span class="pl-k">-&gt;</span> <span class="pl-en">A</span>))</pre></div>
+
+<ul>
+<li>Partial application means that we don’t need to provide all arguments to a function.</li>
+</ul>
+
+<div class="highlight highlight-source-haskell"><pre>sq x y = x * x + y * y
+<span class="pl-c">-- the above function can also be written as:</span>
+sq x y = (sq x) y
+
+sq4 = sq <span class="pl-c1">4</span>      <span class="pl-c">-- &gt; \y -&gt; 16 + y * y</span>
+sq4 <span class="pl-c1">3</span>           <span class="pl-c">-- &gt; (sq 4) 3 = sq 4 3 = 25</span></pre></div>
+
+<h3>
+<a id="polymorphism" class="anchor" href="#polymorphism" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Polymorphism</h3>
+
+<h4>
+<a id="parametric-polymorphism" class="anchor" href="#parametric-polymorphism" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parametric polymorphism</h4>
+
+<ul>
+<li>A polymorphic type that can be instantiated to <em>any type</em>.</li>
+<li>Represented by a type variable. It is conventional to use <code>a</code>, <code>b</code>, <code>c</code>, ...</li>
+<li>
+<code>length :: [a] -&gt; Int</code> can take the length of a list whose elements could have any type.</li>
+</ul>
+
+<h4>
+<a id="ad-hoc-polymorphism" class="anchor" href="#ad-hoc-polymorphism" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ad hoc polymorphism</h4>
+
+<ul>
+<li>A polymorphic type that can be instantiated to <em>any type chosen from a set, called a "type class"</em>.</li>
+<li>Represented by a type variable that is constrained using the <code>=&gt;</code> notation.</li>
+<li>
+<code>(+) :: Num a =&gt; a -&gt; a -&gt; a</code> says that <code>(+)</code> can add values of any type <code>a</code>, provided that <code>a</code> is an element of the type class <code>Num</code>.</li>
+</ul>
+
+<h3>
+<a id="type-inference" class="anchor" href="#type-inference" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Type inference</h3>
+
+<ul>
+<li>Many functional languages feature type inference.</li>
+<li>Type classes allow restrictions to be imposed on polymorphic type variables.
+
+<ul>
+<li>Type classes express that e.g. a type represents a number, or something that can be ordered.</li>
+</ul>
+</li>
+<li>Type inference is the process by which Haskell 'guesses' the types for variables and functions, without the need to specify these types explicitly.</li>
+<li>Type checking takes a type declaration and some code, and determines whether the code actually has the type declared.</li>
+<li>Type inference is the analysis of code in order to infer its type.</li>
+<li>Type inference works by:
+
+<ul>
+<li>Using a set of type inference rules that generate typings based on the program text.</li>
+<li>Combining all the information obtained from the rules to produce the types.</li>
+</ul>
+</li>
+</ul>
+
+<h4>
+<a id="type-inference-rules" class="anchor" href="#type-inference-rules" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Type inference rules</h4>
+
+<ul>
+<li>Type inference is analysis of code in order to infer its type based on type inference rules:
+
+<ul>
+<li>Context</li>
+<li>Type of constant</li>
+<li>Type of application</li>
+<li>Type of lambda expression</li>
+</ul>
+</li>
+</ul>
+
+<hr>
+
+<h2>
+<a id="haskell-in-the-real-world" class="anchor" href="#haskell-in-the-real-world" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Haskell in the Real World</h2>
+
+<p>Functional programming is used by a growing number of companies today. For a small list, please check Future Learn FP MOOC page for this topic.
+<a href="https://www.futurelearn.com/courses/functional-programming-haskell/1/steps/108928">https://www.futurelearn.com/courses/functional-programming-haskell/1/steps/108928</a></p>
+</article></body></html>
