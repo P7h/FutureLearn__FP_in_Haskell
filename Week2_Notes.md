@@ -153,4 +153,3 @@ Two bundled distributions of GHC are:
 * [Haskell Platform](https://www.haskell.org/platform) and
 * [Stack](https://docs.haskellstack.org/en/stable/README/)
 
-------

@@ -12,6 +12,7 @@ check word display c
           then c
           else y | (x,y) <- zip word display])
 
+
 turn :: String -> String -> Int -> IO ()
 -- single turn for user
 turn word display n =
@@ -20,6 +21,7 @@ turn word display n =
        else if word==display
               then putStrLn "You win!"
               else mkguess word display n
+
 
 mkguess :: String -> String -> Int -> IO ()
 -- user inputs a single char (first on the line)
