@@ -2,6 +2,7 @@
 -- Jeremy.Singer@glasgow.ac.uk
 -- Example code for #FLhaskell course
 
+
 -- Nodes contain integers, Leaves are empty
 data Tree = Leaf | Node Int Tree Tree deriving Show
 
@@ -10,8 +11,9 @@ data Tree = Leaf | Node Int Tree Tree deriving Show
 treeDepth :: Tree -> Int
 -- longest path from root to a leaf
 treeDepth Leaf = 0
-treeDepth (Node _ leftSubtree rightSubtree) = 
+treeDepth (Node _ leftSubtree rightSubtree) =
   1 + max (treeDepth leftSubtree) (treeDepth rightSubtree)
+
 
 
 isSortedTree :: Tree -> Int -> Int -> Bool

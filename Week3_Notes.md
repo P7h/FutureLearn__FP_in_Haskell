@@ -300,3 +300,4 @@ One <= Two                  -- > True
 
 ## Haskell History
 * Please check Future Learn FP MOOC page for a [brief history of Haskell](https://www.futurelearn.com/courses/functional-programming-haskell/1/steps/115453).
+
