@@ -1,9 +1,6 @@
 # Week1 Notes of "Haskell First Steps" -- "Functional Programming in Haskell" MOOC
 
 
-```
-Haskell is a purely functional, lazily evaluated, statically typed programming language with type inference.
-```
 ------
 
 ## Contents
@@ -30,12 +27,15 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 
 ------
 
+<a name="haskell-basics"></a>
 ## Haskell Basics
+<a name="expressions"></a>
 ### Expressions
 * Haskell has no statements, only expressions!
 * Pure functional programming languages don’t have any statements — no assignments, no jumps.
 * Instead, all computation is performed by evaluating expressions.
 
+<a name="functions"></a>
 ### Functions
 * There are no parentheses or any special keywords / operators.
 * Arguments are given after the function, separated by whitespace.
@@ -51,6 +51,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     hello name = "Hello, " ++ name
     ```
 
+<a name="types"></a>
 ### Types
 * Haskell types are more powerful than C.
 * Function definition follows the function type declaration.
@@ -72,6 +73,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     * Function arguments are of type `Int` and `Int`; while the return type is `Int`.
     * `x` and `y` are function arguments and `x*y+x+y` is the function body.
 
+<a name="lists"></a>
 ### Lists
 * Python and Haskell have the same syntax for Lists.
 
@@ -84,6 +86,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     lst = [1,2] ++ [3,4]
     ```
 
+<a name="anonymous-functions"></a>
 ### Anonymous functions
 * Anonymous functions are called _lambda functions_ in Haskell, which form the basis of the language.
 * Example syntax:
@@ -92,6 +95,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     f = \x y -> x*y+x+y
     ```
 
+<a name="higher-order-functions"></a>
 ### Higher-order functions
 * Higher-order functions are functions that operate on functions.
 * HOFs take other functions as arguments and may also return other functions.
@@ -105,6 +109,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
     * The initial input list is immutable. Output of this statement is a new list is  created after iterating / processing all the elements of the input list.
     * In this example, each element in the input list is doubled and returned as an element of another new list.
 
+<a name="more-notes"></a>
 ### More notes
 * Precedence of function application: Function application binds tighter than anything else.
 * So `f x + 3` means `(f x) + 3` and not `f (x+3)`
@@ -139,7 +144,9 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 
 ------
 
+<a name="haskell-more-basics"></a>
 ## Haskell More Basics
+<a name="blocks"></a>
 ### Blocks
 * Example code block:
     ```haskell
@@ -155,6 +162,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 
 * `let ... in ...` construct is an expression, so it returns a value. And there is no need for a return keyword.
 
+<a name="conditions"></a>
 ### Conditions
 * Every `if` should have `then` and its corresponding `else` clause.
 * Again the `if ... then ... else ...` construct is an expression, so it returns a value.
@@ -166,6 +174,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
             else y
     ```
 
+<a name="case-statement"></a>
 ### `case` statement
 * A `case` statement is useful for conditions with more than two choices.
 * Can't have guards in `case` expressions.
@@ -187,7 +196,9 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 
 ------
 
+<a name="reduction-functions-and-lists"></a>
 ## Reduction, Functions and Lists
+<a name="reduction"></a>
 ### Reduction
 * The mechanism for executing functional programs is reduction.
 * Reduction is the process of converting an expression to a simpler form.
@@ -196,6 +207,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 * Reduction is the sole means of execution of a functional program.
 * There are no statements, as in imperative languages; all computation is achieved purely by reducing expressions.
 
+<a name="the-church-rosser-theorem"></a>
 #### The Church-Rosser theorem
 * Every terminating reduction path gives the same result
     * Correctness doesn’t depend on order of evaluation.
@@ -204,12 +216,14 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
         * As a result, functional languages are leading contenders for programming future parallel systems.
 * For more info, please check [Wiki page of The Church-Rosser theorem](https://en.wikipedia.org/wiki/Church%E2%80%93Rosser_theorem).
 
+<a name="functions-1"></a>
 ### Functions
 * Haskell is a functional language so the function concept is essential to the language.
 * There are two fundamental operations on functions:
     * function definition &raquo; creating a function and
     * function application &raquo; using a function to compute a result.
 
+<a name="lists-1"></a>
 ### Lists
 * A list is a single value that contains several other values _of the **same data type**_.
 * Syntax: the elements are written in square parentheses, separated by commas.
@@ -294,12 +308,14 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 
 ------
 
+<a name="try-haskell-online"></a>
 ## Try Haskell online
 * Haskell can be tried in the browser at [https://www.haskellmooc.co.uk](https://www.haskellmooc.co.uk).
 * This website was actually created by extending the excellent "Try Haskell" developed by Chris Done: [https://tryhaskell.org/](https://tryhaskell.org/).
 
 ------
 
+<a name="install-haskell"></a>
 ## Install Haskell
 * Haskell compiler / interpreter can be installed using [Haskell Platform](https://www.haskell.org/platform).
 
@@ -307,6 +323,7 @@ Haskell is a purely functional, lazily evaluated, statically typed programming l
 
 ------
 
+<a name="recommended-reading"></a>
 ## Recommended reading
 * Please check [`Haskell Learning Resources`](Haskell_Learning_Resources.md) for detailed list of resources for learning Haskell.
 
