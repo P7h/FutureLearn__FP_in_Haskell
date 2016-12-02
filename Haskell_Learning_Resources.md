@@ -1,8 +1,16 @@
 # Haskell learning resources
 
+------
+
 ## Introduction
 
+```
+Haskell is a purely functional, lazily evaluated, statically typed programming language with type inference.
+```
+
 This page lists all Haskell learning resources I came across during my learning process late 2016.
+
+------
 
 ## Contents
 * [Books](#books)
@@ -25,9 +33,7 @@ This page lists all Haskell learning resources I came across during my learning 
 * GetContented &raquo; [Happy Learn Haskell](http://www.happylearnhaskelltutorial.com/). Available for free to read online.
 * Mark Watson &raquo; [Haskell Tutorial and Cookbook](https://leanpub.com/haskell-cookbook/). Available for free to read online.
 
-
-If you like a "Head First" series kinda book, please check the below book for an entertaining take on Haskell.
-
+If you like a "Head First" series kinda book, please check the below book for an entertaining take on Haskell.<br>
 * Miran Lipovača &raquo; [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/). Available for free to read online.
 
 ------
